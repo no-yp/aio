@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"/data/data/com.termux/files/home/aio/build/cmake_install.cmake"
+		"/data/data/com.termux/files/home/aio-proj/aio/build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

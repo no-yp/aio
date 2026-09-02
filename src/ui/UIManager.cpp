@@ -24,10 +24,8 @@ bool UIManager::Initialize(SDL_Window* window, SDL_Renderer* renderer)
   ImGuiIO& io = ImGui::GetIO();
   io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
   io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
-  io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-  io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
-  // Setup ImGui SDL3 dan SDL Renderer
+  // ImGui SDL3 dan SDL Renderer Setup
   if (!ImGui_ImplSDL3_InitForSDLRenderer(window, renderer)) {
     std::cerr << "Failed to initialize ImGui SDL3 backend" << std::endl;
     return false;
@@ -40,7 +38,7 @@ bool UIManager::Initialize(SDL_Window* window, SDL_Renderer* renderer)
 
   SetupImGuiStyle();
     
-  // Register default panels
+  // Default panels (registration)
   RegisterPanel("ImGui Demo", [this]() {
     if (m_showDemoWindow) {
       ImGui::ShowDemoWindow(&m_showDemoWindow);
@@ -73,23 +71,12 @@ void UIManager::BeginFrame() {
 }
 
 void UIManager::EndFrame() {
-    // Render dilakukan di Render()
+    // Render is on Render()
 }
 
 void UIManager::Render() {
   ImGui::Render();
-  ImGui_ImplSDLRenderer3_RenderDrawData(ImGui::GetDrawData());
-
-  // Update and render additional platform windows
-  ImGuiIO& io = ImGui::GetIO();
-  if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {
-    SDL_Window* backup_current_window = SDL_GetWindowFromID(SDL_GetCurrentWindowID());
-    ImGui::UpdatePlatformWindows();
-    ImGui::RenderPlatformWindowsDefault();
-    if (backup_current_window) {
-      SDL_SetWindowFocus(backup_current_window);
-    }
-  }
+  ImGui_ImplSDLRenderer3_RenderDrawData(ImGui::GetDrawData(), m_renderer);
 }
 
 void UIManager::RegisterPanel(const std::string& name, UIPanel panel) {
@@ -166,8 +153,6 @@ void UIManager::SetupImGuiStyle() {
   colors[ImGuiCol_TabActive]             = ImVec4(0.40f, 0.40f, 0.40f, 1.00f);
   colors[ImGuiCol_TabUnfocused]          = ImVec4(0.15f, 0.15f, 0.15f, 1.00f);
   colors[ImGuiCol_TabUnfocusedActive]    = ImVec4(0.20f, 0.20f, 0.20f, 1.00f);
-  colors[ImGuiCol_DockingPreview]        = ImVec4(0.80f, 0.50f, 0.20f, 0.50f);
-  colors[ImGuiCol_DockingEmptyBg]        = ImVec4(0.10f, 0.10f, 0.10f, 1.00f);
   colors[ImGuiCol_PlotLines]             = ImVec4(0.60f, 0.60f, 0.60f, 1.00f);
   colors[ImGuiCol_PlotLinesHovered]      = ImVec4(1.00f, 0.50f, 0.00f, 1.00f);
   colors[ImGuiCol_PlotHistogram]         = ImVec4(0.80f, 0.50f, 0.20f, 1.00f);

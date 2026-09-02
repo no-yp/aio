@@ -35,7 +35,7 @@ bool Application::Initialize()
 
 
 void Application::Run() {
-  uint16_t previousTime = SDL_GetPerformanceCounter();
+  uint64_t previousTime = SDL_GetPerformanceCounter();
   const uint64_t frequency = SDL_GetPerformanceFrequency();
 
   while (m_running) {
@@ -52,21 +52,20 @@ void Application::Run() {
 
 
 void Application::Shutdown() {
-  if ( m_featureManager )
+  if (m_featureManager)
   { m_featureManager->Shutdown(); }
 
-  if ( m_uiManager )
+  if (m_uiManager)
   { m_uiManager->Shutdown(); }
 
-  if ( m_renderer )
+  if (m_renderer)
   { m_renderer->Shutdown(); }
 
-  if ( m_window )
+  if (m_window)
   { m_window->Shutdown(); }
 
   SDL_Quit();
 }
-
 
 void Application::ProcessEvents()
 {

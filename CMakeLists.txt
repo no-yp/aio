@@ -7,45 +7,42 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Cari SDL3
 find_package(SDL3 CONFIG REQUIRED)
 
-# Tambahkan direktori imgui
-add_subdirectory(third_party/imgui)
-
-# Kumpulkan semua source files
+# Source files aplikasi
 set(SOURCES
-  src/main.cpp
-  src/core/Application.cpp
-  src/core/Window.cpp
-  src/renderer/Renderer.cpp
-  src/ui/UIManager.cpp
-  src/features/FeatureManager.cpp
-  src/features/ExampleFeature.cpp
+    src/main.cpp
+    src/core/Application.cpp
+    src/core/Window.cpp
+    src/renderer/Renderer.cpp
+    src/ui/UIManager.cpp
+    src/features/FeatureManager.cpp
+    src/features/ExampleFeature.cpp
 )
 
-# Tambahkan imgui source
+# ImGui source files (langsung include tanpa add_subdirectory)
 set(IMGUI_SOURCES
-  third_party/imgui/imgui.cpp
-  third_party/imgui/imgui_demo.cpp
-  third_party/imgui/imgui_draw.cpp
-  third_party/imgui/imgui_tables.cpp
-  third_party/imgui/imgui_widgets.cpp
-  third_party/imgui/backends/imgui_impl_sdl3.cpp
-  third_party/imgui/backends/imgui_impl_sdlrenderer3.cpp
+    third_party/imgui/imgui.cpp
+    third_party/imgui/imgui_demo.cpp
+    third_party/imgui/imgui_draw.cpp
+    third_party/imgui/imgui_tables.cpp
+    third_party/imgui/imgui_widgets.cpp
+    third_party/imgui/backends/imgui_impl_sdl3.cpp
+    third_party/imgui/backends/imgui_impl_sdlrenderer3.cpp
 )
 
 # Buat executable
 add_executable(aio ${SOURCES} ${IMGUI_SOURCES})
 
-# Target include directories
+# Include directories
 target_include_directories(aio PRIVATE
-  ${CMAKE_CURRENT_SOURCE_DIR}/src
-  ${CMAKE_CURRENT_SOURCE_DIR}/third_party/imgui
-  ${CMAKE_CURRENT_SOURCE_DIR}/third_party/imgui/backends
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/third_party/imgui
+    ${CMAKE_CURRENT_SOURCE_DIR}/third_party/imgui/backends
 )
 
-# Link SDL3
+# Link libraries
 target_link_libraries(aio PRIVATE SDL3::SDL3)
 
 # Set output directory
 set_target_properties(aio PROPERTIES
-  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
