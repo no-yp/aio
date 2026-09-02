@@ -1,0 +1,13 @@
+# ninja log v7
+13	12275	1788368856580001000	CMakeFiles/aio.dir/src/features/FeatureManager.cpp.o	afbb29dde7a1e5ad
+14	13423	1788368856580001000	CMakeFiles/aio.dir/src/features/ExampleFeature.cpp.o	b2d3b1cb19336bda
+9	13741	1788368856576001000	CMakeFiles/aio.dir/src/renderer/Renderer.cpp.o	d9f15d6541f6f624
+19	18142	1788368856584001000	CMakeFiles/aio.dir/third_party/imgui/imgui_demo.cpp.o	6c8c5e228de3aa13
+22	21231	1788368856588001000	CMakeFiles/aio.dir/third_party/imgui/imgui_draw.cpp.o	8813ee94fd039b41
+14	28183	1788368856580001000	CMakeFiles/aio.dir/third_party/imgui/imgui.cpp.o	8d078b4c749ea094
+93	2149	1788369611596001045	CMakeFiles/aio.dir/third_party/imgui/backends/imgui_impl_sdlrenderer3.cpp.o	223b7dd3a70bab6
+92	2709	1788369611596001045	CMakeFiles/aio.dir/third_party/imgui/backends/imgui_impl_sdl3.cpp.o	e9f017df5d3a7f6b
+90	9908	1788369611592001045	CMakeFiles/aio.dir/third_party/imgui/imgui_tables.cpp.o	a3749fd23c8391e1
+91	17746	1788369611596001045	CMakeFiles/aio.dir/third_party/imgui/imgui_widgets.cpp.o	87cf38f46134abb4
+95	6080	1788371968536001185	CMakeFiles/aio.dir/src/main.cpp.o	496c36c5989623cb
+97	7339	1788371968540001185	CMakeFiles/aio.dir/src/core/Window.cpp.o	4ff8c936c8ff8fd3

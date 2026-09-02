@@ -1,0 +1,3 @@
+/data/data/com.termux/files/home/aio/build/CMakeFiles/aio.dir
+/data/data/com.termux/files/home/aio/build/CMakeFiles/edit_cache.dir
+/data/data/com.termux/files/home/aio/build/CMakeFiles/rebuild_cache.dir
